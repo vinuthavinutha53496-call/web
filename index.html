@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vinutha | Rider & Dreamer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050505;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 60, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #ff3c00;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff3c00;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(circle at 50% 50%, rgba(255, 50, 0, 0.18), transparent 35%),
+                linear-gradient(135deg, #050505, #111, #050505);
+        }
+
+        /* Animated background circles */
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 60, 0, 0.3);
+            animation: pulse 5s infinite ease-in-out;
+        }
+
+        .circle:nth-child(1) {
+            width: 400px;
+            height: 400px;
+        }
+
+        .circle:nth-child(2) {
+            width: 600px;
+            height: 600px;
+            animation-delay: 1s;
+        }
+
+        .circle:nth-child(3) {
+            width: 800px;
+            height: 800px;
+            animation-delay: 2s;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(0.9);
+                opacity: 0.2;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.5;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .helmet {
+            font-size: 70px;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 90px);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin: 15px 0;
+        }
+
+        .hero h1 span {
+            color: #ff3c00;
+            text-shadow: 0 0 25px rgba(255, 60, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border: 2px solid #ff3c00;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background: #ff3c00;
+            box-shadow: 0 0 25px rgba(255, 60, 0, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           SECTIONS
+        ========================== */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            text-transform: uppercase;
+        }
+
+        .section-title span {
+            color: #ff3c00;
+        }
+
+        .section-title p {
+            color: #888;
+            margin-top: 10px;
+        }
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about {
+            background: #090909;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .about-text h3 span {
+            color: #ff3c00;
+        }
+
+        .about-text p {
+            color: #bbb;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .profile-card {
+            padding: 40px;
+            border: 1px solid rgba(255, 60, 0, 0.4);
+            background: linear-gradient(145deg, #111, #080808);
+            box-shadow: 0 0 40px rgba(255, 60, 0, 0.08);
+            text-align: center;
+        }
+
+        .profile-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .profile-card h3 {
+            font-size: 28px;
+        }
+
+        .profile-card p {
+            color: #888;
+            margin-top: 10px;
+        }
+
+        /* =========================
+           INTERESTS
+        ========================== */
+
+        .interests {
+            background: #050505;
+        }
+
+        .cards {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: #101010;
+            padding: 40px 25px;
+            text-align: center;
+            border: 1px solid #222;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: #ff3c00;
+            transition: 0.4s;
+        }
+
+        .card:hover::before {
+            left: 0;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #ff3c00;
+            box-shadow: 0 15px 40px rgba(255, 60, 0, 0.12);
+        }
+
+        .card-icon {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           BIKE SECTION
+        ========================== */
+
+        .bike {
+            background:
+                linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.9)),
+                radial-gradient(circle at center, #401000, #050505 60%);
+            text-align: center;
+        }
+
+        .bike-display {
+            max-width: 900px;
+            margin: auto;
+            padding: 60px 20px;
+            border: 1px solid rgba(255, 60, 0, 0.4);
+            background: rgba(10, 10, 10, 0.7);
+        }
+
+        .bike-graphic {
+            font-size: 150px;
+            filter: drop-shadow(0 0 20px rgba(255, 60, 0, 0.6));
+            animation: bikeFloat 3s infinite ease-in-out;
+        }
+
+        @keyframes bikeFloat {
+            0%, 100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(15px);
+            }
+        }
+
+        .bike-display h2 {
+            font-size: 55px;
+            color: #ff3c00;
+            margin: 20px 0;
+            letter-spacing: 5px;
+        }
+
+        .bike-display p {
+            max-width: 600px;
+            margin: auto;
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           SOLO RIDE
+        ========================== */
+
+        .solo {
+            text-align: center;
+            background: #080808;
+        }
+
+        .quote {
+            max-width: 800px;
+            margin: auto;
+            font-size: 35px;
+            line-height: 1.4;
+            font-weight: bold;
+        }
+
+        .quote span {
+            color: #ff3c00;
+        }
+
+        .road {
+            height: 3px;
+            background: repeating-linear-gradient(
+                to right,
+                #ff3c00 0,
+                #ff3c00 60px,
+                transparent 60px,
+                transparent 100px
+            );
+            margin: 50px auto 0;
+            max-width: 700px;
+            animation: roadMove 1s linear infinite;
+        }
+
+        @keyframes roadMove {
+            from {
+                background-position: 0;
+            }
+
+            to {
+                background-position: 100px;
+            }
+        }
+
+        /* =========================
+           HORROR
+        ========================== */
+
+        .horror {
+            background:
+                radial-gradient(circle at center, #200000, #030303 70%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .horror h2 {
+            font-size: 60px;
+            color: #b30000;
+            text-shadow: 0 0 25px red;
+            animation: horrorGlow 2s infinite alternate;
+        }
+
+        @keyframes horrorGlow {
+            from {
+                text-shadow: 0 0 10px red;
+            }
+
+            to {
+                text-shadow: 0 0 35px red;
+            }
+        }
+
+        .horror p {
+            max-width: 700px;
+            margin: 20px auto;
+            color: #aaa;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .eyes {
+            font-size: 70px;
+            margin: 30px;
+            letter-spacing: 30px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            text-align: center;
+            padding: 35px;
+            background: #020202;
+            border-top: 1px solid #222;
+            color: #777;
+        }
+
+        footer span {
+            color: #ff3c00;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            nav ul li a {
+                font-size: 12px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .bike-display h2 {
+                font-size: 38px;
+            }
+
+            .quote {
+                font-size: 27px;
+            }
+
+            .horror h2 {
+                font-size: 42px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <nav>
+        <div class="logo">VIN<span>UTHA</span></div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#passion">Passion</a></li>
+            <li><a href="#bike">NS200</a></li>
+            <li><a href="#horror">Horror</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero" id="home">
+
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+
+        <div class="hero-content">
+
+            <div class="helmet">🏍️</div>
+
+            <p>WELCOME TO MY WORLD</p>
+
+            <h1>
+                I'M <span>VINUTHA</span>
+            </h1>
+
+            <p>
+                Student • Rider • Solo Traveler • Horror Fan
+            </p>
+
+            <a href="#about" class="btn">Explore Me</a>
+            <a href="#bike" class="btn">My NS200</a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section class="about" id="about">
+
+        <div class="section-title">
+            <h2>About <span>Me</span></h2>
+            <p>A little introduction</p>
+        </div>
+
+        <div class="about-container">
+
+            <div class="about-text">
+
+                <h3>Hello, I'm <span>Vinutha</span> 👋</h3>
+
+                <p>
+                    I am currently studying at JITD. I enjoy exploring
+                    new experiences and making memories along the way.
+                    One of my biggest passions is riding bikes.
+                </p>
+
+                <br>
+
+                <p>
+                    For me, a bike is more than just a machine.
+                    I especially love the NS200 and enjoy the freedom
+                    of going on solo rides.
+                </p>
+
+            </div>
+
+            <div class="profile-card">
+
+                <div class="profile-icon">👩‍🎓</div>
+
+                <h3>VINUTHA</h3>
+
+                <p>Student at JITD</p>
+
+                <p>🏍️ Bike Rider</p>
+
+                <p>🌙 Solo Rider</p>
+
+                <p>👻 Horror Movie Fan</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PASSION
+    ========================== -->
+
+    <section class="interests" id="passion">
+
+        <div class="section-title">
+
+            <h2>My <span>Passions</span></h2>
+
+            <p>The things I love</p>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-icon">🏍️</div>
+
+                <h3>Bike Riding</h3>
+
+                <p>
+                    Riding gives me a feeling of freedom,
+                    adventure and excitement.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🌄</div>
+
+                <h3>Solo Rides</h3>
+
+                <p>
+                    Sometimes the best journey is the one
+                    you take alone.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">👻</div>
+
+                <h3>Horror Movies</h3>
+
+                <p>
+                    I enjoy the thrill, suspense and mystery
+                    of horror movies.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         NS200
+    ========================== -->
+
+    <section class="bike" id="bike">
+
+        <div class="section-title">
+
+            <h2>My <span>Dream Ride</span></h2>
+
+            <p>The machine I love</p>
+
+        </div>
+
+        <div class="bike-display">
+
+            <div class="bike-graphic">
+                🏍️
+            </div>
+
+            <h2>NS 200</h2>
+
+            <p>
+                Aggressive looks, exciting performance and
+                the feeling of freedom on the open road.
+                The NS200 is the bike I love.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SOLO RIDE
+    ========================== -->
+
+    <section class="solo">
+
+        <div class="section-title">
+
+            <h2>Solo <span>Ride</span></h2>
+
+            <p>Sometimes solitude is the best company.</p>
+
+        </div>
+
+        <div class="quote">
+
+            "Ride alone.<br>
+            <span>Find yourself on the road.</span>"
+
+        </div>
+
+        <div class="road"></div>
+
+    </section>
+
+
+    <!-- =========================
+         HORROR
+    ========================== -->
+
+    <section class="horror" id="horror">
+
+        <div class="section-title">
+
+            <h2>HORROR <span>NIGHT</span></h2>
+
+            <p>Lights off. Volume up. Let the fear begin...</p>
+
+        </div>
+
+        <div class="eyes">
+            👁️ 👁️
+        </div>
+
+        <p>
+            When I'm not riding my bike, I enjoy watching horror movies.
+            I love the suspense, mystery and adrenaline that comes
+            with a good scary movie.
+        </p>
+
+        <br>
+
+        <a href="#home" class="btn">Back To Top</a>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            Made with ❤️ by <span>Vinutha</span>
+        </p>
+
+        <p>
+            🏍️ Ride • 🌄 Explore • 👻 Enjoy the Thrill
+        </p>
+
+    </footer>
+
+</body>
+</html>
